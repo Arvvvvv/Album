@@ -5,12 +5,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
 .container {
     width: 100%;
     min-height: 100vh;
@@ -79,8 +73,7 @@ html, body {
 
 img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto;
     border-radius: 8px;
     border: 3px solid #779ECB;
 }
@@ -88,8 +81,6 @@ img {
 .slide {
     display: none;
     text-align: center;
-    width: 100%;
-    height: 100%;
 }
 
 .prev, .next {
@@ -136,6 +127,8 @@ img {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    position: relative;
+    right: 0;
 }
 
 #ymd-counter {
@@ -151,247 +144,124 @@ img {
     color: #777;
 }
 
-/* ========== PORTRAIT ORIENTATION ========== */
-@media (orientation: portrait) {
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
     .container {
         flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 40px;
-        gap: 25px;
-    }
-    
-    .content {
-        order: 1;
-        margin-bottom: 10px;
-    }
-    
-    .slideshow-frame {
-        order: 2;
-        width: 90%;
-        margin-bottom: 10px;
-    }
-    
-    .counter-container {
-        order: 3;
-        margin-top: 10px;
-    }
-    
-    #frame {
-        aspect-ratio: 3/4;
-        max-height: 70vh;
-    }
-    
-    .content h1 {
-        font-size: clamp(2rem, 7vw, 3.5rem);
-        margin-bottom: 20px;
-    }
-}
-
-/* ========== LANDSCAPE ORIENTATION ========== */
-@media (orientation: landscape) {
-    .container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: flex-start;
-        padding: 15px;
         gap: 20px;
-    }
-    
-    .content {
-        width: 30%;
-        max-width: 300px;
-        order: 1;
-    }
-    
-    .slideshow-frame {
-        width: 40%;
-        max-width: 400px;
-        order: 2;
-    }
-    
-    .counter-container {
-        width: 80%;
-        max-width: 400px;
-        order: 3;
-        margin-top: 20px;
-    }
-    
-    #frame {
-        aspect-ratio: 4/3;
-        max-height: 60vh;
-    }
-    
-    .content h1 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
-        margin-bottom: 15px;
-    }
-    
-    /* For mobile landscape with small height */
-    @media (max-height: 500px) and (orientation: landscape) {
-        .container {
-            padding: 10px;
-            gap: 10px;
-        }
-        
-        .content h1 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        #frame {
-            max-height: 50vh;
-        }
-        
-        .counter-container {
-            padding: 10px;
-        }
-        
-        #ymd-counter {
-            font-size: 1.2rem;
-        }
-    }
-}
-
-/* ========== SPECIFIC DEVICE SIZES ========== */
-/* Small phones (portrait) */
-@media (max-width: 480px) and (orientation: portrait) {
-    .container {
         padding: 15px;
-        gap: 20px;
-    }
-    
-    #frame {
-        aspect-ratio: 2/3;
-        max-height: 60vh;
-    }
-    
-    .content h1 {
-        font-size: 2rem;
-    }
-    
-    .content a {
-        padding: 10px 16px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Tablets (portrait) */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-    .container {
-        padding: 30px;
-        gap: 40px;
-    }
-    
-    #frame {
-        max-width: 500px;
-        max-height: 500px;
-    }
-    
-    .content h1 {
-        font-size: 3.5rem;
-    }
-}
-
-/* Tablets (landscape) */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .content {
-        width: 25%;
-    }
-    
-    .slideshow-frame {
-        width: 35%;
-    }
-    
-    #frame {
-        max-height: 70vh;
     }
     
     .content h1 {
         font-size: 2.5rem;
-    }
-}
-
-/* ========== BACKGROUND VIDEO ADJUSTMENTS ========== */
-/* Fix video background for different orientations */
-@media (orientation: portrait) {
-    .background-clip {
-        object-fit: cover;
-        object-position: center center;
-    }
-}
-
-@media (orientation: landscape) {
-    .background-clip {
-        object-fit: cover;
-        object-position: center center;
-    }
-}
-
-/* ========== NAVIGATION BUTTONS ADJUSTMENTS ========== */
-@media (max-width: 768px) {
-    .prev, .next {
-        padding: 10px 14px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin-bottom: 20px;
     }
     
-    /* Larger touch targets for mobile */
-    .prev::after, .next::after {
-        content: '';
-        position: absolute;
-        top: -10px;
-        bottom: -10px;
-        left: -10px;
-        right: -10px;
+    .slideshow-frame {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    #frame {
+        height: auto;
+        max-height: 500px;
+    }
+    
+    .prev, .next {
+        padding: 6px 10px;
+        font-size: 18px;
+    }
+    
+    .counter-container {
+        padding: 12px;
+        margin-top: 20px;
     }
 }
 
-/* ========== FIX FOR VERY SMALL SCREENS ========== */
-@media (max-width: 320px) {
+@media (max-width: 480px) {
     .container {
+        gap: 15px;
         padding: 10px;
     }
     
+    .content h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .content a {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+    
+    #frame {
+        max-height: 400px;
+    }
+    
+    .prev, .next {
+        padding: 5px 8px;
+        font-size: 16px;
+    }
+    
+    #ymd-counter {
+        font-size: 1.8rem;
+    }
+    
+    .date-label {
+        font-size: 0.9rem;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 320px) {
     .content h1 {
         font-size: 1.8rem;
     }
     
     #frame {
-        aspect-ratio: 9/16;
-    }
-}
-
-/* ========== PREVENT TEXT OVERFLOW ========== */
-.content h1, #ymd-counter, .date-label {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-}
-
-/* ========== IMPROVE TOUCH EXPERIENCE ========== */
-@media (hover: none) and (pointer: coarse) {
-    .content a {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        max-height: 350px;
     }
     
     .prev, .next {
-        background: rgba(0,0,0,0.7);
+        padding: 4px 6px;
+        font-size: 14px;
     }
 }
 
-/* ========== SAFE AREA INSETS FOR NOTCHED PHONES ========== */
-@supports (padding: max(0px)) {
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
     .container {
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
-        padding-top: max(20px, env(safe-area-inset-top));
-        padding-bottom: max(20px, env(safe-area-inset-bottom));
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    
+    .content {
+        width: 40%;
+    }
+    
+    .slideshow-frame {
+        width: 50%;
+    }
+    
+    .counter-container {
+        width: 100%;
+        order: 3;
+        margin-top: 10px;
+    }
+}
+
+/* Fix for your existing aspect ratio media queries */
+@media (min-aspect-ratio: 16/9) {
+    .background-clip {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .background-clip {
+        width: auto;
+        height: 100%;
     }
 }
