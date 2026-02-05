@@ -59,19 +59,3 @@ function updateCounter()
 updateCounter();
 setInterval(updateCounter, 1000);
 
-function handleOrientationChange() {
-    if (window.matchMedia("(orientation: portrait)").matches) {
-        document.body.classList.add('portrait');
-        document.body.classList.remove('landscape');
-    } else {
-        document.body.classList.add('landscape');
-        document.body.classList.remove('portrait');
-    }
-}
-
-// Initialize on load
-window.addEventListener('load', handleOrientationChange);
-// Update on orientation change
-window.addEventListener('orientationchange', handleOrientationChange);
-// Update on resize
-window.addEventListener('resize', handleOrientationChange);
